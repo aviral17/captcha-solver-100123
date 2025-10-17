@@ -1,30 +1,18 @@
-# Captcha Solver Web Application
+# Responsive Web Application with Dark Mode
 
-This is a responsive, single-file web application built with Tailwind CSS that allows users to input an image URL containing a CAPTCHA, display the image, and simulate solving the CAPTCHA.
+This project is a simple, fully responsive web application demonstrating toggleable dark mode using Tailwind CSS. It features a header with a toggle button, a sample image, and smooth theme transitions.
 
 ## Features
-- Dynamic image URL input, defaults to `sample.png`
-- Responsive design suitable for mobile and desktop
-- Simulated CAPTCHA solving with placeholder logic
-- Reset functionality to reload default image
+- Responsive layout optimized for mobile and desktop
+- Dark mode toggle with smooth transition
+- Clean, professional design
 
 ## Usage
-1. Open the `index.html` file in your browser.
-2. Enter or modify the image URL in the input box.
-3. Click "Solve" to simulate CAPTCHA solving.
-4. Click "Reset" to reload the default image.
+Open `index.html` in your web browser. Click the "Toggle Dark Mode" button to switch themes.
 
-## Notes
-- The solving function is mocked and returns placeholder text.
-- Replace the `solveCaptcha` function with actual OCR or API integration for real CAPTCHA solving.
-- Ensure `sample.png` is located in the same directory as this file.
-
-## Dependencies
-- Tailwind CSS CDN for styling
+## Files
+- `index.html` : Complete HTML file with embedded Tailwind CSS and JavaScript.
+- `sample.png` : Sample image referenced in the application.
 
 ## License
-This project is licensed under the MIT License.
-
----
-
-*Generated as per specifications.*
+This project is licensed under the MIT License. See `LICENSE` for details.

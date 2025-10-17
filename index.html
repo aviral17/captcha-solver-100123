@@ -3,88 +3,28 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Captcha Solver</title>
+<title>Responsive Web Application with Dark Mode</title>
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center font-sans">
-<div class="w-full max-w-2xl p-6 bg-white rounded shadow-md">
-<h1 class="text-2xl font-bold mb-4 text-center">Captcha Solver</h1>
-<div class="mb-4">
-<label for="imageUrl" class="block text-gray-700 mb-2">Image URL</label>
-<input type="text" id="imageUrl" class="w-full p-2 border border-gray-300 rounded" placeholder="Enter image URL" />
-</div>
-<div class="mb-4 text-center">
-<img id="captchaImage" src="sample.png" alt="Captcha Image" class="mx-auto max-w-full h-auto border-2 border-gray-300 rounded" />
-</div>
-<div class="mb-4">
-<label for="solution" class="block text-gray-700 mb-2">Solution</label>
-<input type="text" id="solution" class="w-full p-2 border border-gray-300 rounded" readonly />
-</div>
-<div class="flex justify-center space-x-4">
-<button id="solveBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">Solve</button>
-<button id="resetBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded">Reset</button>
-</div>
-</div>
-<script>
-// Function to parse URL parameters
-function getUrlParameter(name) {
-  const params = new URLSearchParams(window.location.search);
-  return params.get(name);
-}
-
-// Initialize
-const imageUrlInput = document.getElementById('imageUrl');
-const captchaImage = document.getElementById('captchaImage');
-const solutionInput = document.getElementById('solution');
-const solveBtn = document.getElementById('solveBtn');
-const resetBtn = document.getElementById('resetBtn');
-
-// Set default image URL from ?url= parameter or fallback to sample.png
-const defaultUrl = getUrlParameter('url') || 'sample.png';
-imageUrlInput.value = defaultUrl;
-captchaImage.src = defaultUrl;
-
-// Update image when URL input changes
-imageUrlInput.addEventListener('change', () => {
-  captchaImage.src = imageUrlInput.value;
-  solutionInput.value = '';
-});
-
-// Mock solving function (simulate with delay)
-function solveCaptcha(imageSrc) {
-  return new Promise((resolve) => {
-    // Simulate processing delay
-    setTimeout(() => {
-      // For demo, just return a fixed string or derive from image URL
-      // In real scenario, call an API or OCR library here
-      // For sample.png, return 'ABCD'
-      if (imageSrc.includes('sample.png')) {
-        resolve('ABCD');
-      } else {
-        resolve('SOLVED');
-      }
-    }, 1500);
-  });
-}
-
-// Handle Solve Button
-solveBtn.addEventListener('click', () => {
-  solutionInput.value = 'Solving...';
-  solveCaptcha(captchaImage.src).then((result) => {
-    solutionInput.value = result;
-  });
-});
-
-// Handle Reset Button
-resetBtn.addEventListener('click', () => {
-  // Reset image URL to default
-  const defaultUrl = getUrlParameter('url') || 'sample.png';
-  imageUrlInput.value = defaultUrl;
-  captchaImage.src = defaultUrl;
-  solutionInput.value = '';
-});
-</script>
-</div>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+  <header class="flex items-center justify-between p-4 bg-gray-100 dark:bg-gray-800">
+    <h1 class="text-2xl font-bold">My Web Application</h1>
+    <button id="darkModeToggle" class="px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Toggle Dark Mode
+    </button>
+  </header>
+  <main class="p-4">
+    <section class="max-w-2xl mx-auto">
+      <h2 class="text-xl font-semibold mb-4">Sample Image</h2>
+      <img src="sample.png" alt="Sample" class="w-full h-auto rounded shadow" />
+    </section>
+  </main>
+  <script>
+    const toggleButton = document.getElementById('darkModeToggle');
+    toggleButton.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+  </script>
 </body>
 </html>
